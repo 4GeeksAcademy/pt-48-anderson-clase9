@@ -55,6 +55,57 @@ En este ejemplo, el bucle se ejecutará mientras `i` sea menor que 5, comenzando
 ## Conclusión
 El bucle `for` en JavaScript es una herramienta poderosa para repetir tareas específicas en un programa. Comprender y controlar las partes de un bucle `for`, es decir, la inicialización, la condición y la actualización, es esencial para escribir bucles efectivos y controlados. Estas partes trabajan juntas para controlar la lógica de repetición del bucle.
 
+# Hoisting en JavaScript
+
+El hoisting es un comportamiento en JavaScript que puede parecer confuso a primera vista, pero es importante entenderlo para escribir código más claro y predecible. Hoisting se refiere al comportamiento de cómo las declaraciones de variables y funciones se "elevan" o mueven al principio de su ámbito durante la fase de compilación del código. Esto puede llevar a resultados inesperados si no se comprende correctamente. A continuación, se explica en detalle cómo funciona el hoisting en JavaScript.
+
+## Variables y Hoisting
+
+Cuando se declara una variable con `var`, la declaración se "eleva" al principio de su ámbito (ya sea una función o el ámbito global). Sin embargo, la asignación de valor se queda en su lugar. Esto significa que puede parecer que estás usando una variable antes de declararla, pero en realidad JavaScript la ha "levantado" al principio de su ámbito, aunque su valor sigue siendo `undefined`.
+
+Ejemplo:
+
+```javascript
+console.log(miVariable); // undefined
+var miVariable = 42;
+```
+El código anterior se interpreta como:
+```javascript
+var miVariable; // La declaración se eleva
+console.log(miVariable); // undefined
+miVariable = 42; // La asignación de valor se mantiene en su lugar
+```
+## Funciones y Hoisting
+El hoisting también se aplica a las declaraciones de funciones, tanto para funciones declarativas como para expresiones de función. Esto significa que puedes llamar a una función antes de declararla en el código, y JavaScript la "elevará" al principio de su ámbito.
+
+Ejemplo:
+```javascript
+saludar(); // Hola, mundo!
+
+function saludar() {
+  console.log("Hola, mundo!");
+}
+```
+El código anterior se interpreta como:
+```javascript
+function saludar() {
+  console.log("Hola, mundo!");
+}
+
+saludar(); // Hola, mundo!
+```
+## Let y Const en Hoisting
+A diferencia de `var`, las variables declaradas con `let` y `const` no son inicializadas con un valor predeterminado de `undefined` durante el hoisting. Intentar acceder a una variable `let` o `const` antes de su declaración resultará en un error de referencia indefinida.
+
+Ejemplo:
+```javascript
+console.log(miVariable); // Error: miVariable is not defined
+let miVariable = 42;
+```
+## Conclusión
+El hoisting en JavaScript puede ser un concepto sorprendente, pero es importante tenerlo en cuenta al escribir código. Para evitar problemas, es una buena práctica declarar todas las variables al principio de su ámbito y asegurarte de entender cómo se comportan las variables y funciones durante el hoisting. El uso de `let` y `const` en lugar de `var` puede ayudar a reducir la confusión y a escribir código más robusto y predecible.
+
+
 
 
 
